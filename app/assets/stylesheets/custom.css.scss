@@ -11,5 +11,18 @@
   width: 100%;
   margin-top: 50px;
   background: #BBBBBB;
+  border: 1px solid #000000;
+  padding: 20px;
   @include box_sizing
+}
+
+
+input, textarea, select, .uneditable-input{
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+input{
+  height: auto !important;
 }
