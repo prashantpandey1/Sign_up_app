@@ -1,9 +1,9 @@
 <%= provide(:title, @user.name) %>
 <div class="row m-5">
   <aside class="col-12 text-center">
-    <div class="d-flex justify-content-center">
-      <img src="<%= asset_path('users/pp.jpg') %>" alt="banner image" height="50">
-      <h2 class="px-2"><%= @user.name %></h2>
+    <div class="d-flex justify-content-center align-items-center user-img">
+      <%= gravatar_for @user %>
+      <%= @user.name %>
     </div>
     <%= @user.email %>
   </aside>
