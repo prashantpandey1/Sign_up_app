@@ -1,8 +1,25 @@
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+      <section class="micropost_form">
+        <%= render 'shared/micropost_form' %>
+      </section>
+    </aside>
+    <div class="col-md-8 mt-5">
+      <h3>Micropost Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
+  </div>
+
+<% else %>
 <div class="text-center m-5">
   <h1>Sample App</h1>
   <p>This is the home Page</p>
   <button type="button" class="btn btn-primary">
     <%= link_to "Sign Up Now", signup_path, class: "btn btn-primary" %></button>
 </div>
-
+<% end %>
 

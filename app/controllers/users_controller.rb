@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :admin_user, only: :destroy
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.all
   end
   def new
     @user = User.new
@@ -18,7 +19,6 @@ class UsersController < ApplicationController
       @user.send_activation_email
       flash[:info] = "Please check your email to activate your account"
       redirect_to root_url
-      # Handle a succefull users
     else
       render 'new'
     end
@@ -52,15 +52,6 @@ class UsersController < ApplicationController
   end
 
   #Before filter
-
-  #Confirms a logged-in user.
- def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = "Please log in."
-      redirect_to login_url
-    end
- end
 
   #Confirms the correct user
   def correct_user

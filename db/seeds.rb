@@ -16,3 +16,9 @@ User.create!(name: "Prashant Pandey",
                  activated: true,
                  activated_at: Time.zone.now)
 end
+
+users = User.order(:created_at).take(6)
+50.times do |n|
+  content = "#{n+1} Prashant Microposts,similar for everyone it's hard coded"
+  users.each { |user| user.microposts.create!(content: content)}
+end

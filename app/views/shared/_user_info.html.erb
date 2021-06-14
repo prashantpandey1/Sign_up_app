@@ -1,0 +1,8 @@
+<div class="d-flex mt-5 mb-3">
+  <%= link_to gravatar_for(current_user, size: 50), current_user %>
+  <div class="px-3">
+    <h3 class="mb-0"><%= current_user.name %></h3>
+    <span><%= link_to "view my profile", current_user %></span>
+    <p><%= pluralize(current_user.microposts.count, "micropost") %>microposts</p>
+  </div>
+  </div>
