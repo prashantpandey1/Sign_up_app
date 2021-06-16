@@ -4,4 +4,7 @@
 
 <ul class="users">
   <%= render @users %>
+  <div class="digg_pagination">
+  <%= will_paginate @users %>
+  </div>
 </ul>
