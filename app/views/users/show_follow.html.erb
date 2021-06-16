@@ -1,0 +1,31 @@
+<% provide(:title, @title) %>
+<div class="row mt-5">
+  <aside class="col-md-4">
+    <section class="user_info d-flex user-profile">
+      <%= gravatar_for(@user, size:80) %>
+      <div>
+        <h2 class="mb-0"><%= @user.name %></h2>
+        <p class="mb-0"><%= link_to "view my profile", @user %></p>
+        <p class="mb-0"><b>Microposts:</b> <%= @user.microposts.count %></p>
+      </div>
+    </section>
+    <section class="mt-4">
+      <%= render 'shared/stats' %>
+      <% if @users.any? %>
+      <div class="user_avatars mt-4 follow_img">
+        <% @users.each do |user| %>
+        <%= link_to gravatar_for(user, size: 40), user %>
+        <% end %>
+      </div>
+      <% end %>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <h3><%= @title %></h3>
+    <% if @users.any? %>
+      <ul class="users follow">
+        <%= render @users %>
+      </ul>
+      <% end %>
+  </div>
+</div>

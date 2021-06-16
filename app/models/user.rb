@@ -77,10 +77,12 @@ class User < ApplicationRecord
     reset_send_at < 2.hours.ago
   end
 
-  #Define a proto-feed
-  # See "following users" for the full implementation
+  # Returns a user's status feed.
   def feed
-    Micropost.where("user_id = ?", id)
+    following_ids_subselect = "SELECT followed_id FROM relationships
+                               WHERE follower_id = :user_id"
+    Micropost.where("user_id IN (#{following_ids_subselect})
+                     OR user_id = :user_id", user_id: id)
   end
 
   # Follows a user
